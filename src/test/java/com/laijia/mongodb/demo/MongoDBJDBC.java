@@ -1,4 +1,4 @@
-package com.tuxt.mongodb;
+package com.laijia.mongodb.demo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

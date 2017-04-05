@@ -1,4 +1,4 @@
-package com.tuxt.mongodb;
+package com.laijia.mongodb.util;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -13,7 +13,7 @@ public class PropertiesUtil {
 	}
 	public static void mongodbConfigInit() {
 		try {
-			mongodbConfig = new PropertiesConfiguration("config/system.properties");
+			mongodbConfig = new PropertiesConfiguration("config/mongodb.properties");
 			mongodbConfig.setReloadingStrategy(new FileChangedReloadingStrategy());
 			mongodbConfig.setEncoding(encoding);
 		} catch (ConfigurationException e) {
