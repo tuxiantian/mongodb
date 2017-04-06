@@ -51,7 +51,29 @@ public class DeviceDataControler {
 		service.save(record);
 		return new Result(ResultCode.Base.SUCCESS_CODE, ResultCode.getMsg(ResultCode.Base.SUCCESS_CODE), null);
 	}
-
+	
+	/**
+	 * 查询一辆车最新的状态信息，按receivedTime排序
+	 * @param sn
+	 * @return CarInfo json
+	 */
+	@RequestMapping(value="findLastedCarInfo",method=RequestMethod.POST)
+	@ResponseBody
+	String findLastedCarInfo(@RequestParam String sn){
+		return service.findLastedCarInfo(sn);
+	}
+	
+	/**
+	 * 查询一辆车最新的位置信息，按gpsTime排序
+	 * @param sn
+	 * @return CarLocation json
+	 */
+	@RequestMapping(value="findLastedCarLocation",method=RequestMethod.POST)
+	@ResponseBody
+	String findLastedCarLocation(@RequestParam String sn){
+		return service.findLastedCarLocation(sn);
+	}
+	
 	/**
 	 * 查询一辆车最新一条的记录，按receivedTime排序
 	 * @param sn

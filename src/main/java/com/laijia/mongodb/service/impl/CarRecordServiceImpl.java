@@ -67,6 +67,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 		MongoCollection<Document> collection = MongoDBUtil.getMongoDatabase().getCollection(COLLECTION_PREFIX_CARLOCATION+carLocation.getSn());
 		collection.insertOne(document);
 	}
+	@Deprecated
 	public void save(CarRecord record) {
 		Document document=new Document().append("id", record.getId())
 				.append("sn", record.getSn())
@@ -96,10 +97,41 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
+	 * 查询一辆车最新的状态信息，按receivedTime排序
+	 * @param sn
+	 * @return CarInfo json
+	 */
+	public String findLastedCarInfo(String sn) {
+		BasicDBObject sort=new BasicDBObject("receivedTime", -1);
+		FindIterable<Document> findIterable = MongoDBUtil.getMongoDatabase().getCollection(COLLECTION_PREFIX_CARINFO+sn).find().sort(sort);
+		MongoCursor<Document> mongoCursor=findIterable.iterator();
+		while (mongoCursor.hasNext()) {
+			return JSON.serialize(mongoCursor.next());
+		}
+		return "";
+	}
+	
+	/**
+	 * 查询一辆车最新的位置信息，按gpsTime排序
+	 * @param sn
+	 * @return CarLocation json
+	 */
+	public String findLastedCarLocation(String sn) {
+		BasicDBObject sort=new BasicDBObject("gpsTime", -1);
+		FindIterable<Document> findIterable = MongoDBUtil.getMongoDatabase().getCollection(COLLECTION_PREFIX_CARLOCATION+sn).find().sort(sort);
+		MongoCursor<Document> mongoCursor=findIterable.iterator();
+		while (mongoCursor.hasNext()) {
+			return JSON.serialize(mongoCursor.next());
+		}
+		return "";
+	}
+	
+	/**
 	 * 查询一辆车最新一条的记录，按receivedTime排序
 	 * @param sn
 	 * @return CarRecord json
 	 */
+	@Deprecated
 	public String findLastedCarRecord(String sn) {
 		BasicDBObject sort=new BasicDBObject("receivedTime", -1);
 		FindIterable<Document> findIterable = MongoDBUtil.getMongoDatabase().getCollection(COLLECTION_PREFIX+sn).find().sort(sort);
@@ -117,6 +149,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	 * @param sn
 	 * @return
 	 */
+	@Deprecated
 	public String findBetweenReceivedTime(long startTime,long endTime,String sn) {
 		BasicDBObject condition=new BasicDBObject()
 		.append("receivedTime", new BasicDBObject("$gte", startTime))
@@ -132,4 +165,46 @@ public class CarRecordServiceImpl implements CarRecordService {
 		return JSON.serialize(result);
 	}
 	
+	public List<CarLocation> getCarLocations(String deviceStr) {
+		String[] devices = deviceStr.split(",");
+		List<CarLocation> carLocations=new ArrayList<>(devices.length);
+		for (int i = 0; i < devices.length; i++) {
+			CarLocation location=new CarLocation();
+			location.setAltitude(12);
+			location.setDirection(14);
+			location.setGpsTime(System.currentTimeMillis());
+			location.setId(Integer.parseInt(devices[i]));
+			location.setIdc("123");
+			location.setLatitude(12.0);
+			location.setSn(devices[i]);
+			location.setSpeed(100);
+			carLocations.add(location);
+		}
+		return carLocations;
+	}
+	public List<CarInfo> getCarInfos(String deviceStr) {
+		String[] devices = deviceStr.split(",");
+		List<CarInfo> carInfos=new ArrayList<>(devices.length);
+		for (int i = 0; i < devices.length; i++) {
+			CarInfo info=new CarInfo();
+			info.setId(Integer.parseInt(devices[i]));
+			info.setSn(devices[i]);
+			info.setCentralLckingStatus(1);
+			info.setChargeStatus(1);
+			info.setElectricity("60/100");
+			info.setIdc("123");
+			info.setLeftFrontDoor(1);
+			info.setLeftRearDoor(1);
+			info.setLightsStatus(1);
+			info.setMileage(12.0);
+			info.setOn(0);
+			info.setReceivedTime(System.currentTimeMillis());
+			info.setRightFrontDoor(1);
+			info.setRightRearDoor(1);
+			info.setTotalMileage(24.0);
+			info.setVoltage("12.0");
+			carInfos.add(info);
+		}
+		return carInfos;
+	}
 }

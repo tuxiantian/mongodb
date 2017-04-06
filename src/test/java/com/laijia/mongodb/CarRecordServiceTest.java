@@ -3,12 +3,35 @@ package com.laijia.mongodb;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.laijia.mongodb.entity.CarInfo;
 import com.laijia.mongodb.entity.CarRecord;
 import com.laijia.mongodb.service.CarRecordService;
 import com.laijia.mongodb.service.impl.CarRecordServiceImpl;
 
 public class CarRecordServiceTest {
 	CarRecordService service=new CarRecordServiceImpl();
+	
+	@Test
+	public void testSaveCarInfo() {
+		CarInfo info=new CarInfo();
+		info.setId(500);
+		info.setSn("500");
+		info.setCentralLckingStatus(1);
+		info.setChargeStatus(1);
+		info.setElectricity("60/100");
+		info.setIdc("123");
+		info.setLeftFrontDoor(1);
+		info.setLeftRearDoor(1);
+		info.setLightsStatus(1);
+		info.setMileage(12.0);
+		info.setOn(0);
+		info.setReceivedTime(System.currentTimeMillis());
+		info.setRightFrontDoor(1);
+		info.setRightRearDoor(1);
+		info.setTotalMileage(24.0);
+		info.setVoltage("12.0");
+		service.saveCarInfo(info);
+	}
 	@Test
 	public void testSave() {
 		/*"id": 0,

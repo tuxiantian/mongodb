@@ -13,10 +13,11 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.util.JSON;
 
-public class MongoDBJDBC{
+public class MongoDBDemo{
 	// 连接到 mongodb 服务
 	static 	MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
 
@@ -75,11 +76,11 @@ public class MongoDBJDBC{
 		} catch (Exception e) {
 		}
 	}
-	public static void findAll(){
+	public static void findAll(String collectionName){
 		try{   
-			MongoCollection<Document> collection=mongoDatabase.getCollection("col");
+			MongoCollection<Document> collection=mongoDatabase.getCollection(collectionName);
 			for (Document document : collection.find()) {
-				System.out.println(document.getString("title"));
+				System.out.println(JSON.serialize(document));
 			}
 		}catch(Exception e){
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -127,9 +128,18 @@ public class MongoDBJDBC{
 		bean.put("name", "zhangsan");
 		System.out.println(JSON.serialize(bean));
 	}
+	public static void showAllCollectionName() {
+		MongoIterable<String> listCollectionNames = mongoDatabase.listCollectionNames();
+		MongoCursor<String> iterator = listCollectionNames.iterator();
+		while(iterator.hasNext()){
+			System.out.println(iterator.next());
+		}
+	}
 	public static void main( String args[] ){
-			page();
+//			page();
 //		find();
 //		insert();
+		showAllCollectionName();
+//		findAll("carLocation239");
 	}
 }
