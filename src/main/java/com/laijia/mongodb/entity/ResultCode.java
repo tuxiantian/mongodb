@@ -6,11 +6,11 @@ import java.util.HashMap;
  * Created by wbq on 2016/10/13.
  */
 public class ResultCode {
-    //�������
+    //错误代码
     public static HashMap<String, String> codeMsg = new HashMap<String, String>();
 
     /**
-     * �������񣬰�������ģ���ͨ�ô�����룬����������󣬷������쳣����0��ͷ
+     * 基础服务，包含基础模块或通用错误代码，比如参数错误，服务器异常，以0开头
      */
     public static class Base {
         public static final String SUCCESS_CODE = "0";
@@ -19,7 +19,7 @@ public class ResultCode {
         public static final String ERR_SERVER_EXCEP = "0004";
         public static final String ERR_VALID_CODE = "0005";
         public static final String ERR_DATA_NO_FUND = "0006";
-        //ǩ������
+        //签名出错
         public static final String ERR_SIGN_ERROR = "0011";
         public static final String ERR_SAVE_FILE_ERROR = "0012";
 
@@ -34,31 +34,31 @@ public class ResultCode {
         public static final String ERR_AUTH_ERROR = "0020";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(SUCCESS_CODE, "����ɹ�");
-            codeMsg.put(ERR_PARA_ERROR, "��������ȷ");
+            codeMsg.put(SUCCESS_CODE, "请求成功");
+            codeMsg.put(ERR_PARA_ERROR, "参数不正确");
 
-            //���ڶ������󣬱����ֻ��Ź����ز�ѯ
-            codeMsg.put(ERR_REQ_ERROR, "����������޷���ȡ����");
-            codeMsg.put(ERR_SERVER_EXCEP, "��������æ,���Ժ�����");
-            codeMsg.put(ERR_VALID_CODE, "��֤�����");
-            codeMsg.put(ERR_DATA_NO_FUND, "��ѯ��������");
-            codeMsg.put(ERR_SIGN_ERROR, "����ǩ���������޷�����");
-            codeMsg.put(ERR_SAVE_FILE_ERROR, "�ϴ��ļ�����");
-            codeMsg.put(ERR_LOCATION_ERROR, "��λ��Ϣ����");
-            codeMsg.put(ERR_SEND_CODE_ERROR, "������֤��ʧ��");
-            codeMsg.put(ERR_SEND_CODE_FREQUENT, "������֤��̫Ƶ��");
-            codeMsg.put(ERR_FILE_TOO_BIG, "�ϴ����ļ�̫��");
-            codeMsg.put(ERR_IMAGE_CAN_NOT_UPLOAD, "��֤�к���֤�ɹ�����Ƭ���������ϴ�");
-            codeMsg.put(ERR_AREA_DATA_NOT_NEW, "��������������Ҫ����");
-            codeMsg.put(ERR_TOKEN, "��¼��Ϣ�ѹ��ڣ������µ�¼");
-            codeMsg.put(ERR_AUTH_ERROR, "��¼��Ϣ�ѹ��ڣ������µ�¼");
+            //用于对外请求，比如手机号归属地查询
+            codeMsg.put(ERR_REQ_ERROR, "请求出错，无法获取内容");
+            codeMsg.put(ERR_SERVER_EXCEP, "服务器繁忙,请稍后重试");
+            codeMsg.put(ERR_VALID_CODE, "验证码错误");
+            codeMsg.put(ERR_DATA_NO_FUND, "查询不到数据");
+            codeMsg.put(ERR_SIGN_ERROR, "请求签名出错，无法处理");
+            codeMsg.put(ERR_SAVE_FILE_ERROR, "上传文件出错");
+            codeMsg.put(ERR_LOCATION_ERROR, "定位信息出错");
+            codeMsg.put(ERR_SEND_CODE_ERROR, "发送验证码失败");
+            codeMsg.put(ERR_SEND_CODE_FREQUENT, "发送验证码太频繁");
+            codeMsg.put(ERR_FILE_TOO_BIG, "上传的文件太大");
+            codeMsg.put(ERR_IMAGE_CAN_NOT_UPLOAD, "认证中和认证成功的照片不能重新上传");
+            codeMsg.put(ERR_AREA_DATA_NOT_NEW, "行政区划数据需要更新");
+            codeMsg.put(ERR_TOKEN, "登录信息已过期，请重新登录");
+            codeMsg.put(ERR_AUTH_ERROR, "登录信息已过期，请重新登录");
 
         }
     }
 
 
     /**
-     * �˻�������룬��Աģ�飬��1��ͷ
+     * 账户错误代码，会员模块，以1开头
      */
     public static class Account {
 
@@ -69,17 +69,17 @@ public class ResultCode {
         public static final String ERR_ACCOUNT_NOT_AUTH = "1005";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_MEMB_FREEZE, "��Ա�Ѷ���");
-            codeMsg.put(ERR_ACCOUNT_NOT_FOUNT, "û���û���Ϣ");
-            codeMsg.put(ERR_ACCOUNT_AUTH_NOT_FOUNT, "û���û���֤��Ϣ");
-            codeMsg.put(ERR_ACCOUNT_AUTH_IMAGE_NOT_FOUNT, "û���û���֤��Ƭ��Ϣ");
-            codeMsg.put(ERR_ACCOUNT_NOT_AUTH, "�û���֤ʧ��");
+            codeMsg.put(ERR_MEMB_FREEZE, "会员已冻结");
+            codeMsg.put(ERR_ACCOUNT_NOT_FOUNT, "没有用户信息");
+            codeMsg.put(ERR_ACCOUNT_AUTH_NOT_FOUNT, "没有用户认证信息");
+            codeMsg.put(ERR_ACCOUNT_AUTH_IMAGE_NOT_FOUNT, "没有用户认证照片信息");
+            codeMsg.put(ERR_ACCOUNT_NOT_AUTH, "用户认证失败");
 
         }
     }
 
     /**
-     * Ӫ���������룬��2��ͷ
+     * 营销活动错误代码，以2开头
      */
     public static class Activity {
         public static final String ERR_REDEEM_CODE_INVALID = "2008";
@@ -90,18 +90,18 @@ public class ResultCode {
         public static final String ERR_RECEIVE_ERROR = "2013";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_REDEEM_CODE_INVALID, "�һ�����Ч");
-            codeMsg.put(ERR_REDEEM_CODE_EXPIRE, "�һ����ѹ���");
-            codeMsg.put(ERR_REDEEM_CODE_EXCHANGED, "�һ����ѱ��һ�");
-            codeMsg.put(ERR_GET_ONLY_ONCE, "�����ظ���ȡ");
-            codeMsg.put(ERR_EXCEED_COUNT, "������");
-            codeMsg.put(ERR_RECEIVE_ERROR, "��ȡʧ��");
+            codeMsg.put(ERR_REDEEM_CODE_INVALID, "兑换码无效");
+            codeMsg.put(ERR_REDEEM_CODE_EXPIRE, "兑换码已过期");
+            codeMsg.put(ERR_REDEEM_CODE_EXCHANGED, "兑换码已被兑换");
+            codeMsg.put(ERR_GET_ONLY_ONCE, "不能重复领取");
+            codeMsg.put(ERR_EXCEED_COUNT, "已领完");
+            codeMsg.put(ERR_RECEIVE_ERROR, "领取失败");
 
         }
     }
 
     /**
-     * ����ģ�������룬��3��ͷ
+     * 订单模块错误代码，以3开头
      */
     public static class Order {
 
@@ -126,29 +126,29 @@ public class ResultCode {
         public static final String ERR_NOT_IN_BACKAREA = "3018";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_NOT_PAY_ORDER, "δ֧���Ķ���");
-            codeMsg.put(ERR_PROGRESS_ORDER, "����һ�������е��г�");
-            codeMsg.put(ERR_CAR_NO_PRICE, "����δ�趨�۸�");
-            codeMsg.put(ERR_ORDER_NOT_FOUND, "����������");
-            codeMsg.put(ERR_ORDER_CANCEL, "�����޷�ȡ��");
-            codeMsg.put(ERR_ORDER_NO_CANCEL_NUM, "����ȡ������������ʹ�����");
-            codeMsg.put(ERR_ORDER_END, "����״̬���ԣ��޷�����");
-            codeMsg.put(ERR_ORDER_END_COUNT, "������Ϣ�����޷�����");
-            codeMsg.put(ERR_ORDER_COUPON, "�Żݾ������޷�֧��");
-            codeMsg.put(ERR_ORDER_PAY_AMOUNT_NOT_ENOUGH, "���㣬�޷�֧��");
-            codeMsg.put(ERR_ORDER_NO_PRICE, "����δ�Ʒѣ��޷�֧��");
-            codeMsg.put(ERR_ORDER_STATUS, "����״̬����");
-            codeMsg.put(ERR_ORDER_PAY_AMOUNT, "����֧��������");
-            codeMsg.put(ERR_VIOLATION_STATUS_ERROR, "Υ��״̬����ȷ");
-            codeMsg.put(ERR_DISPOSEWAY_ERROR, "Υ�´�����ʽ����ȷ");
-            codeMsg.put(ERR_VIOLATION_NOT_FOUND, "û�и�Υ����Ϣ");
-            codeMsg.put(ERR_DEPOSITPAYID_NOT_FOUND, "�ö���û�й����ı��Ͻ�");
-            codeMsg.put(ERR_NOT_IN_BACKAREA, "���ڻ�������,���ܻ���");
+            codeMsg.put(ERR_NOT_PAY_ORDER, "未支付的订单");
+            codeMsg.put(ERR_PROGRESS_ORDER, "您有一个进行中的行程");
+            codeMsg.put(ERR_CAR_NO_PRICE, "车辆未设定价格");
+            codeMsg.put(ERR_ORDER_NOT_FOUND, "订单不存在");
+            codeMsg.put(ERR_ORDER_CANCEL, "订单无法取消");
+            codeMsg.put(ERR_ORDER_NO_CANCEL_NUM, "今日取消订单数量已使用完毕");
+            codeMsg.put(ERR_ORDER_END, "订单状态不对，无法结束");
+            codeMsg.put(ERR_ORDER_END_COUNT, "订单信息有误无法结束");
+            codeMsg.put(ERR_ORDER_COUPON, "优惠卷有误，无法支付");
+            codeMsg.put(ERR_ORDER_PAY_AMOUNT_NOT_ENOUGH, "金额不足，无法支付");
+            codeMsg.put(ERR_ORDER_NO_PRICE, "订单未计费，无法支付");
+            codeMsg.put(ERR_ORDER_STATUS, "订单状态不对");
+            codeMsg.put(ERR_ORDER_PAY_AMOUNT, "订单支付金额不符合");
+            codeMsg.put(ERR_VIOLATION_STATUS_ERROR, "违章状态不正确");
+            codeMsg.put(ERR_DISPOSEWAY_ERROR, "违章处理方式不正确");
+            codeMsg.put(ERR_VIOLATION_NOT_FOUND, "没有该违章信息");
+            codeMsg.put(ERR_DEPOSITPAYID_NOT_FOUND, "该订单没有关联的保障金");
+            codeMsg.put(ERR_NOT_IN_BACKAREA, "不在还车区域,不能还车");
         }
     }
 
     /**
-     * ����ģ�������룬��4��ͷ
+     * 车俩模块错误代码，以4开头
      */
     public static class Car {
 
@@ -166,23 +166,23 @@ public class ResultCode {
         public static final String ERR_TBOX_HAS_EXIST = "4012";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_CAR_NOT_FOUND, "������Ϣ������");
-            codeMsg.put(ERR_CAR_NOT_USEABLE, "�����ݲ�����");
-            codeMsg.put(ERR_CAR_AUTH_NOT_FOUND, "���������Ϣ������");
-            codeMsg.put(ERR_CAR_AUTH_IMAGE_NOT_FOUNT, "�������ͼƬ��Ϣ������");
-            codeMsg.put(ERR_CAR_DEVICE_NOT_FOUND, "�����豸��Ϣ������");
-            codeMsg.put(ERR_CARMODEL_HAS_CAR, "�ó������г���ʹ��,����ɾ��");
-            codeMsg.put(ERR_TBOX_HAS_CAR, "���ն����г���ʹ��,����ɾ��");
-            codeMsg.put(ERR_CARMODEL_NOT_FOUND, "���Ͳ�����");
-            codeMsg.put(ERR_VIN_HAS_EXIST, "�ó��ܺ�������");
-            codeMsg.put(ERR_LPN_HAS_EXIST, "�ó��ƺ�������");
-            codeMsg.put(ERR_ENG_HAS_EXIST, "�÷�������������");
-            codeMsg.put(ERR_TBOX_HAS_EXIST, "���豸����������");
+            codeMsg.put(ERR_CAR_NOT_FOUND, "车辆信息不存在");
+            codeMsg.put(ERR_CAR_NOT_USEABLE, "车辆暂不可用");
+            codeMsg.put(ERR_CAR_AUTH_NOT_FOUND, "车辆审核信息不存在");
+            codeMsg.put(ERR_CAR_AUTH_IMAGE_NOT_FOUNT, "车辆审核图片信息不存在");
+            codeMsg.put(ERR_CAR_DEVICE_NOT_FOUND, "车辆设备信息不存在");
+            codeMsg.put(ERR_CARMODEL_HAS_CAR, "该车型已有车辆使用,不能删除");
+            codeMsg.put(ERR_TBOX_HAS_CAR, "该终端已有车辆使用,不能删除");
+            codeMsg.put(ERR_CARMODEL_NOT_FOUND, "车型不存在");
+            codeMsg.put(ERR_VIN_HAS_EXIST, "该车架号已添加");
+            codeMsg.put(ERR_LPN_HAS_EXIST, "该车牌号已添加");
+            codeMsg.put(ERR_ENG_HAS_EXIST, "该发动机号已添加");
+            codeMsg.put(ERR_TBOX_HAS_EXIST, "该设备编码已添加");
         }
     }
 
     /**
-     * ����ģ�������룬����֧��,��5��ͷ
+     * 财务模块错误代码，包含支付,以5开头
      */
     public static class Finance {
 
@@ -211,32 +211,32 @@ public class ResultCode {
 
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_WALLET_NOT_ENOUGH, "���㣬�޷�֧��");
-            codeMsg.put(ERR_PAY_ERROR, "֧�����ִ���");
-            codeMsg.put(ERR_WX_PAY, "΢��֧�������ִ���");
-            codeMsg.put(ERR_ALI_PAY, "֧����֧�������ִ���");
-            codeMsg.put(ERR_PAY_ORDER_FAIL, "֧���µ�ʧ��");
-            codeMsg.put(ERR_RECHARGE_NOT_FOUND, "��ֵ��������");
-            codeMsg.put(ERR_DEPOSIT_NOT_NEED, "����Ҫ���Ͻ�");
-            codeMsg.put(ERR_DEPOSIT_AMOUNT_ERROR, "���Ͻ������ò���ȷ");
-            codeMsg.put(ERR_DEPOSIT_NOT_FOUNT, "û�иñʱ��Ͻ���Ϣ");
-            codeMsg.put(ERR_DEPOSIT_APPLIED, "�ñʱ��Ͻ���������˻�");
-            codeMsg.put(ERR_NO_USABLE_DEPOSIT, "û�п��õı��Ͻ�");
-            codeMsg.put(ERR_DEPOSIT_LOCKED, "�ñʱ��Ͻ�����");
+            codeMsg.put(ERR_WALLET_NOT_ENOUGH, "余额不足，无法支付");
+            codeMsg.put(ERR_PAY_ERROR, "支付出现错误");
+            codeMsg.put(ERR_WX_PAY, "微信支付，出现错误");
+            codeMsg.put(ERR_ALI_PAY, "支付宝支付，出现错误");
+            codeMsg.put(ERR_PAY_ORDER_FAIL, "支付下单失败");
+            codeMsg.put(ERR_RECHARGE_NOT_FOUND, "充值配置有误");
+            codeMsg.put(ERR_DEPOSIT_NOT_NEED, "不需要保障金");
+            codeMsg.put(ERR_DEPOSIT_AMOUNT_ERROR, "保障金金额配置不正确");
+            codeMsg.put(ERR_DEPOSIT_NOT_FOUNT, "没有该笔保障金信息");
+            codeMsg.put(ERR_DEPOSIT_APPLIED, "该笔保障金已申请过退还");
+            codeMsg.put(ERR_NO_USABLE_DEPOSIT, "没有可用的保障金");
+            codeMsg.put(ERR_DEPOSIT_LOCKED, "该笔保障金被锁定");
 
-            codeMsg.put(ERR_INVOICE_AMOUNT, "��Ʊ���������ѽ��");
-            codeMsg.put(ERR_LOW_INVOICE_AMOUNT, "��Ʊ���С����Ϳɿ����");
-            codeMsg.put(ERR_MAIL_FEE_ERROR, "�ʷѽ���ȷ");
-            codeMsg.put(ERR_PAY_TYPE_ERROR, "֧����ʽ����");
-            codeMsg.put(ERR_PRICE_CONFIG_HAS, "����Ѿ����ù��������ظ�����");
-            codeMsg.put(ERR_DEPOSIT_RE_BACK, "���Ͻ������˻��У������ظ��˻�");
-            codeMsg.put(ERR_DEPOSIT_LOCK, "���Ͻ��Ѿ�����״̬���޷��˻�");
-            codeMsg.put(ERR_DEPOSIT_BACK, "���Ͻ��˻�ʧ�ܣ�����ϵ�ͷ�");
+            codeMsg.put(ERR_INVOICE_AMOUNT, "发票金额大于消费金额");
+            codeMsg.put(ERR_LOW_INVOICE_AMOUNT, "发票金额小于最低可开金额");
+            codeMsg.put(ERR_MAIL_FEE_ERROR, "邮费金额不正确");
+            codeMsg.put(ERR_PAY_TYPE_ERROR, "支付方式有误");
+            codeMsg.put(ERR_PRICE_CONFIG_HAS, "租金已经设置过，不能重复设置");
+            codeMsg.put(ERR_DEPOSIT_RE_BACK, "保障金正在退还中，不能重复退还");
+            codeMsg.put(ERR_DEPOSIT_LOCK, "保障金已经锁定状态，无法退还");
+            codeMsg.put(ERR_DEPOSIT_BACK, "保障金退还失败，请联系客服");
         }
     }
 
     /**
-     * ������ģ�������룬��6��ͷ
+     * 车联网模块错误代码，以6开头
      */
     public static class Iov {
         public static final String ERR_LOAD_INFO = "6001";
@@ -249,14 +249,14 @@ public class ResultCode {
         public static final String ERR_DOOR_OPEN = "6008";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_LOAD_INFO, "��ȡ���������豸��Ϣ");
-            codeMsg.put(ERR_CENTRAL_LOCK_STATUS, "����δ����");
-            codeMsg.put(ERR_CENTRAL_LOCKING, "����ʧ�ܣ��޷�����");
-            codeMsg.put(ERR_OPT_CAR, "�����ٿ�ʧ�ܣ�������");
-            codeMsg.put(ERR_ENGINE, "������δϨ���޷�����");
-            codeMsg.put(ERR_TOTAL_MILEAGE, "��ȡ������ʻ��̣��޷��⳵");
-            codeMsg.put(ERR_CENTRAL_LOCK_DOOR_OPEN, "����δ�أ��޷�����");
-            codeMsg.put(ERR_DOOR_OPEN, "����δ�أ��޷�����");
+            codeMsg.put(ERR_LOAD_INFO, "获取不到车辆设备信息");
+            codeMsg.put(ERR_CENTRAL_LOCK_STATUS, "车辆未锁定");
+            codeMsg.put(ERR_CENTRAL_LOCKING, "锁车失败，无法还车");
+            codeMsg.put(ERR_OPT_CAR, "车辆操控失败，请重试");
+            codeMsg.put(ERR_ENGINE, "发动机未熄火，无法还车");
+            codeMsg.put(ERR_TOTAL_MILEAGE, "获取不到行驶里程，无法租车");
+            codeMsg.put(ERR_CENTRAL_LOCK_DOOR_OPEN, "车门未关，无法锁车");
+            codeMsg.put(ERR_DOOR_OPEN, "车门未关，无法还车");
         }
     }
 
@@ -276,38 +276,38 @@ public class ResultCode {
         public static final String ERR_POST_HAS_CHILD = "7013";
 
         public static void init(HashMap<String, String> codeMsg) {
-            codeMsg.put(ERR_NEED_PASSWARD, "�����û�,���벻��Ϊ��");
-            codeMsg.put(ERR_ORG_NOT_FOUND, "����֯����������");
-            codeMsg.put(ERR_DEPT_NOT_FOUND, "�ò��Ų�����");
-            codeMsg.put(ERR_DEPT_HAS_CHILD, "�ò������Ӽ�����,����ɾ��");
-            codeMsg.put(ERR_DEPT_HAS_USER, "�ò������û�,����ɾ��");
-            codeMsg.put(ERR_POST_HAS_USER, "��ְλ�������ĳ���û�,����ɾ��");
-            codeMsg.put(ERR_AREA_HAS_ORG, "����Ӫ������������Ӫ��,����ɾ��");
-            codeMsg.put(ERR_USER_NOT_FOUND, "�û�������");
-            codeMsg.put(ERR_USER_PWD_ERR, "�������");
-            codeMsg.put(ERR_USER_EXIST, "�����û�ʹ�ø��ֻ���");
-            codeMsg.put(ERR_USER_DISABLE, "���û��ѱ�����");
-            codeMsg.put(ERR_ORG_DISABLE, "���û���������֯�����ѱ�����");
-            codeMsg.put(ERR_POST_HAS_CHILD, "��ְλ���Ӽ�ְλ,����ɾ��");
+            codeMsg.put(ERR_NEED_PASSWARD, "新增用户,密码不能为空");
+            codeMsg.put(ERR_ORG_NOT_FOUND, "该组织机构不存在");
+            codeMsg.put(ERR_DEPT_NOT_FOUND, "该部门不存在");
+            codeMsg.put(ERR_DEPT_HAS_CHILD, "该部门有子级部门,不能删除");
+            codeMsg.put(ERR_DEPT_HAS_USER, "该部门有用户,不能删除");
+            codeMsg.put(ERR_POST_HAS_USER, "该职位分配给了某个用户,不能删除");
+            codeMsg.put(ERR_AREA_HAS_ORG, "该运营城市已设置运营商,不能删除");
+            codeMsg.put(ERR_USER_NOT_FOUND, "用户不存在");
+            codeMsg.put(ERR_USER_PWD_ERR, "密码错误");
+            codeMsg.put(ERR_USER_EXIST, "已有用户使用该手机号");
+            codeMsg.put(ERR_USER_DISABLE, "该用户已被禁用");
+            codeMsg.put(ERR_ORG_DISABLE, "该用户所属的组织机构已被禁用");
+            codeMsg.put(ERR_POST_HAS_CHILD, "该职位有子级职位,不能删除");
         }
     }
 
     static {
-        //����������
+        //公共错误码
         Base.init(codeMsg);
-        //��Աģ��
+        //会员模块
         Account.init(codeMsg);
-        //Ӫ���ģ��
+        //营销活动模块
         Activity.init(codeMsg);
-        //����ģ��
+        //订单模块
         Order.init(codeMsg);
-        //������Ϣģ��
+        //车辆信息模块
         Car.init(codeMsg);
-        //������Ϣģ��
+        //财务信息模块
         Finance.init(codeMsg);
-        //��������Ϣģ��
+        //车联网信息模块
         Iov.init(codeMsg);
-        //ϵͳ����ģ��
+        //系统管理模块
         Sys.init(codeMsg);
     }
 

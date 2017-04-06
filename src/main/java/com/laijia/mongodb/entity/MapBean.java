@@ -22,7 +22,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * ´«Èë0µ½n¶ÔÏó£¬´´½¨MapBean
+     * ä¼ å…¥0åˆ°nå¯¹è±¡ï¼Œåˆ›å»ºMapBean
      *
      * @param args
      */
@@ -32,9 +32,9 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * µ±ÄãÈ·ÇĞÖªµÀ·µ»ØÀàĞÍÊ±£¬²ÅÄÜÊ¹ÓÃ
+     * å½“ä½ ç¡®åˆ‡çŸ¥é“è¿”å›ç±»å‹æ—¶ï¼Œæ‰èƒ½ä½¿ç”¨
      *
-     * @param key æIÖµ
+     * @param key éµå€¼
      * @return
      */
     public <X> X get(String key) {
@@ -42,16 +42,16 @@ public class MapBean extends HashMap<String, Object> implements Entity {
             X value = (X) super.get(key);
             return value;
         } catch (ClassCastException e) {
-            throw new ClassCastException("MapBeanÖĞ´æ·ÅµÄÀàĞÍ£¬Óë·µ»ØÀàĞÍ²»Æ¥Åä.");
+            throw new ClassCastException("MapBeanä¸­å­˜æ”¾çš„ç±»å‹ï¼Œä¸è¿”å›ç±»å‹ä¸åŒ¹é….");
         }
 
     }
 
     /**
-     * »ñµÃIntegerÀàĞÍµÄÖµ
+     * è·å¾—Integerç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public Integer getInt(Object key) {
         Object value = get(key);
@@ -72,10 +72,10 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃIntegerÀàĞÍµÄÖµ
+     * è·å¾—Integerç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public Long[] getLongArray(String key) {
         if (StringUtils.isBlank(key)) {
@@ -96,7 +96,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * ¸ù¾İÖ¸¶¨µÄÖµ·µ»ØlongĞÍÊı×é£¬ÓÃÓÚÉ¾³ı
+     * æ ¹æ®æŒ‡å®šçš„å€¼è¿”å›longå‹æ•°ç»„ï¼Œç”¨äºåˆ é™¤
      *
      * @param values
      * @return
@@ -116,10 +116,10 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃByteÀàĞÍµÄÖµ
+     * è·å¾—Byteç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public Byte getByte(Object key) {
         Integer i = getInt(key);
@@ -127,10 +127,10 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃLongÀàĞÍµÄÖµ
+     * è·å¾—Longç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public Long getLong(Object key) {
         Object value = get(key);
@@ -147,10 +147,10 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃDoubleÀàĞÍµÄÖµ
+     * è·å¾—Doubleç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public Double getDouble(Object key) {
         Object value = get(key);
@@ -167,10 +167,10 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃStringÀàĞÍµÄÖµ
+     * è·å¾—Stringç±»å‹çš„å€¼
      *
-     * @param key ¼üÖµ
-     * @return Öµ
+     * @param key é”®å€¼
+     * @return å€¼
      */
     public String getString(Object key) {
         Object v = get(key);
@@ -181,11 +181,11 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃByteÀàĞÍµÄÖµ
+     * è·å¾—Byteç±»å‹çš„å€¼
      *
-     * @param key        ¼üÖµ
-     * @param defaultVal ÎŞÖµÊÇµÄÄ¬ÈÏÖµ
-     * @return Öµ
+     * @param key        é”®å€¼
+     * @param defaultVal æ— å€¼æ˜¯çš„é»˜è®¤å€¼
+     * @return å€¼
      */
     public Byte getByte(Object key, byte defaultVal) {
         Byte b = getByte(key);
@@ -193,11 +193,11 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃintÀàĞÍµÄÖµ
+     * è·å¾—intç±»å‹çš„å€¼
      *
-     * @param key        ¼üÖµ
-     * @param defaultVal ÎŞÖµÊÇµÄÄ¬ÈÏÖµ
-     * @return Öµ
+     * @param key        é”®å€¼
+     * @param defaultVal æ— å€¼æ˜¯çš„é»˜è®¤å€¼
+     * @return å€¼
      */
     public int getInt(Object key, int defaultVal) {
         Integer i = getInt(key);
@@ -209,7 +209,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * ·µ»ØbooleanÀàĞÍÖµ
+     * è¿”å›booleanç±»å‹å€¼
      *
      * @param key
      * @param defaultVal
@@ -232,11 +232,11 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃlongÀàĞÍµÄÖµ
+     * è·å¾—longç±»å‹çš„å€¼
      *
-     * @param key        ¼üÖµ
-     * @param defaultVal ÎŞÖµÊÇµÄÄ¬ÈÏÖµ
-     * @return Öµ
+     * @param key        é”®å€¼
+     * @param defaultVal æ— å€¼æ˜¯çš„é»˜è®¤å€¼
+     * @return å€¼
      */
     public long getLong(Object key, int defaultVal) {
         Long i = getLong(key);
@@ -244,11 +244,11 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * »ñµÃStringÀàĞÍµÄÖµ
+     * è·å¾—Stringç±»å‹çš„å€¼
      *
-     * @param key        ¼üÖµ
-     * @param defaultVal ÎŞÖµÊÇµÄÄ¬ÈÏÖµ
-     * @return Öµ
+     * @param key        é”®å€¼
+     * @param defaultVal æ— å€¼æ˜¯çš„é»˜è®¤å€¼
+     * @return å€¼
      */
     public String getString(Object key, String defaultVal) {
         String value = getString(key);
@@ -256,7 +256,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * Ò»´ÎÌí¼Ó¶à¸ö¶ÔÏóµ½MapÖĞ
+     * ä¸€æ¬¡æ·»åŠ å¤šä¸ªå¯¹è±¡åˆ°Mapä¸­
      *
      * @param args
      */
@@ -267,7 +267,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * ½«Map×ª³Éjson¸ñÊ½µÄ×Ö·û´®
+     * å°†Mapè½¬æˆjsonæ ¼å¼çš„å­—ç¬¦ä¸²
      *
      * @return
      */
@@ -276,7 +276,7 @@ public class MapBean extends HashMap<String, Object> implements Entity {
     }
 
     /**
-     * ½«Map¸ñÊ½µÄJSON×Ö·û´®Öµ£¬×ª³ÉMap¼¯ºÏ
+     * å°†Mapæ ¼å¼çš„JSONå­—ç¬¦ä¸²å€¼ï¼Œè½¬æˆMapé›†åˆ
      *
      * @param keys
      * @return

@@ -1,7 +1,7 @@
 package com.laijia.mongodb.entity;
 
 /**
- * ³µÁ¾µÄ²É¼¯Êı¾İ
+ * è½¦è¾†çš„é‡‡é›†æ•°æ®
  * @author tuxt
  *
  */

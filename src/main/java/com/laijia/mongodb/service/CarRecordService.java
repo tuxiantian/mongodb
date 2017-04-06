@@ -11,27 +11,27 @@ public interface CarRecordService {
 	List<CarLocation> getCarLocations(String deviceStr);
 	List<CarInfo> getCarInfos(String deviceStr);
 	/**
-	 * ��ѯһ�������µ�λ����Ϣ����gpsTime����
+	 * 查询一辆车最新的位置信息，按gpsTime排序
 	 * @param sn
 	 * @return CarLocation json
 	 */
 	public String findLastedCarLocation(String sn);
 	
 	/**
-	 * ��ѯһ�������µ�״̬��Ϣ����receivedTime����
+	 * 查询一辆车最新的状态信息，按receivedTime排序
 	 * @param sn
 	 * @return CarInfo json
 	 */
 	public String findLastedCarInfo(String sn);
 	
 	/**
-	 * ���泵�Ļ�����Ϣ
+	 * 保存车的基本信息
 	 * @param carInfo
 	 */
 	void saveCarInfo(CarInfo carInfo);
 
 	/**
-	 * ���泵��λ�������Ϣ
+	 * 保存车的位置相关信息
 	 * @param carLocation
 	 */
 	void saveCarLocation(CarLocation carLocation);
@@ -39,14 +39,14 @@ public interface CarRecordService {
 	void save(CarRecord record);
 
 	/**
-	 * ��ѯһ��������һ���ļ�¼����receivedTime����
+	 * 查询一辆车最新一条的记录，按receivedTime排序
 	 * @param sn
 	 * @return CarRecord json
 	 */
 	String findLastedCarRecord(String sn);
 
 	/**
-	 * ��ѯһ����һ��ʱ��ļ�¼
+	 * 查询一辆车一段时间的记录
 	 * @param startTime
 	 * @param endTime
 	 * @param sn

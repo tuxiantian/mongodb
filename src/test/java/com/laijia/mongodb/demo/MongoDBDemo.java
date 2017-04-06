@@ -18,27 +18,27 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.util.JSON;
 
 public class MongoDBDemo{
-	// Á¬½Óµ½ mongodb ·şÎñ
+	// è¿æ¥åˆ° mongodb æœåŠ¡
 	static 	MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
 
-	// Á¬½Óµ½Êı¾İ¿â
+	// è¿æ¥åˆ°æ•°æ®åº“
 	static 	MongoDatabase mongoDatabase = mongoClient.getDatabase("test"); 
 	
 	public static void find() {
 		try {
 			MongoCollection<Document> collection=mongoDatabase.getCollection("col");
 			BasicDBObject condition=new BasicDBObject();
-			//gt²éÑ¯
+			//gtæŸ¥è¯¢
 			condition.append("likes", new BasicDBObject("$gt", 100));		
 			printResult(collection, condition);
 			System.out.println("-----------------------$gt-------------------------");
-			//where²éÑ¯
+			//whereæŸ¥è¯¢
 			String function = "function (){return parseFloat(this.likes) > 100 && parseFloat(this.likes) < 200};";
 			condition = new BasicDBObject();
 			condition.put("$where",function);
 			printResult(collection, condition);
 			System.out.println("----------------------$where--------------------------");
-			//Ä£ºıÆ¥Åä ÕıÔò±í´ïÊ½
+			//æ¨¡ç³ŠåŒ¹é… æ­£åˆ™è¡¨è¾¾å¼
 			FindIterable<Document> findIterable = collection.find(Filters.regex("title", "^Mongo.*$"));
 			MongoCursor<Document> mongoCursor=findIterable.iterator();
 			while (mongoCursor.hasNext()) {
@@ -65,7 +65,7 @@ public class MongoDBDemo{
 		try {
 			MongoCollection<Document> collection=mongoDatabase.getCollection("col");
 			BasicDBObject sort=new BasicDBObject();
-			// 1,±íÊ¾ÕıĞò£» £­1,±íÊ¾µ¹Ğò
+			// 1,è¡¨ç¤ºæ­£åºï¼› ï¼1,è¡¨ç¤ºå€’åº
 			sort.put("title", 1);
 			int start=0,pageSize=2;
 			FindIterable<Document> findIterable =collection.find().sort(sort).skip(start).limit(pageSize);
@@ -90,11 +90,11 @@ public class MongoDBDemo{
 		try {
 
 			MongoCollection<Document> collection=mongoDatabase.getCollection("col");
-			//²åÈëÎÄµµ  
+			//æ’å…¥æ–‡æ¡£  
 			/** 
-			 * 1. ´´½¨ÎÄµµ org.bson.Document ²ÎÊıÎªkey-valueµÄ¸ñÊ½ 
-			 * 2. ´´½¨ÎÄµµ¼¯ºÏList<Document> 
-			 * 3. ½«ÎÄµµ¼¯ºÏ²åÈëÊı¾İ¿â¼¯ºÏÖĞ mongoCollection.insertMany(List<Document>) ²åÈëµ¥¸öÎÄµµ¿ÉÒÔÓÃ mongoCollection.insertOne(Document) 
+			 * 1. åˆ›å»ºæ–‡æ¡£ org.bson.Document å‚æ•°ä¸ºkey-valueçš„æ ¼å¼ 
+			 * 2. åˆ›å»ºæ–‡æ¡£é›†åˆList<Document> 
+			 * 3. å°†æ–‡æ¡£é›†åˆæ’å…¥æ•°æ®åº“é›†åˆä¸­ mongoCollection.insertMany(List<Document>) æ’å…¥å•ä¸ªæ–‡æ¡£å¯ä»¥ç”¨ mongoCollection.insertOne(Document) 
 			 * */
 			Document document = new Document("title", "MongoDB").  
 					append("description", "database").  
@@ -103,18 +103,18 @@ public class MongoDBDemo{
 			List<Document> documents = new ArrayList<Document>();  
 			documents.add(document);  
 			collection.insertMany(documents);  
-			System.out.println("ÎÄµµ²åÈë³É¹¦");
+			System.out.println("æ–‡æ¡£æ’å…¥æˆåŠŸ");
 		} catch (Exception e) {
 		}
 	}
 	public static void update() {
 		try {
 			MongoCollection<Document> collection = mongoDatabase.getCollection("col");
-			System.out.println("¼¯ºÏ test Ñ¡Ôñ³É¹¦");
+			System.out.println("é›†åˆ test é€‰æ‹©æˆåŠŸ");
 
-			//¸üĞÂÎÄµµ   ½«ÎÄµµÖĞlikes=100µÄÎÄµµĞŞ¸ÄÎªlikes=200   
+			//æ›´æ–°æ–‡æ¡£   å°†æ–‡æ¡£ä¸­likes=100çš„æ–‡æ¡£ä¿®æ”¹ä¸ºlikes=200   
 			collection.updateMany(Filters.eq("likes", 100), new Document("$set",new Document("likes",200)));  
-			//¼ìË÷²é¿´½á¹û  
+			//æ£€ç´¢æŸ¥çœ‹ç»“æœ  
 			FindIterable<Document> findIterable = collection.find();  
 			MongoCursor<Document> mongoCursor = findIterable.iterator();  
 			while(mongoCursor.hasNext()){  

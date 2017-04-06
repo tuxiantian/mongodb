@@ -7,7 +7,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDBUtil {
 
-	// Á¬½Óµ½Êı¾İ¿â
+	// è¿æ¥åˆ°æ•°æ®åº“
 	static 	MongoDatabase mongoDatabase ;
 	static {
 		ServerAddress serverAddress=new ServerAddress("localhost" , 27017);
@@ -18,7 +18,7 @@ public class MongoDBUtil {
 		builder.socketTimeout(PropertiesUtil.getMongodbInteger("mongo.socketTimeout"));
 		builder.threadsAllowedToBlockForConnectionMultiplier(PropertiesUtil.getMongodbInteger("mongo.threadsAllowedToBlockForConnectionMultiplier"));
 		MongoClientOptions clientOptions=builder.build();
-		// Á¬½Óµ½ mongodb ·şÎñ
+		// è¿æ¥åˆ° mongodb æœåŠ¡
 		MongoClient mongoClient = new MongoClient( serverAddress , clientOptions );
 		mongoDatabase = mongoClient.getDatabase("test");
 	}

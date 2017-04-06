@@ -3,7 +3,7 @@ package com.laijia.mongodb.util;
 import com.google.gson.Gson;
 
 /**
- * json、对象转换辅助类
+ * json銆佸璞¤浆鎹㈣緟鍔╃被
  *
  * @author wbq
  */

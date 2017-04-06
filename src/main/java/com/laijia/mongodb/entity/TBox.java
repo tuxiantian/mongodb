@@ -2,7 +2,7 @@ package com.laijia.mongodb.entity;
 
 public class TBox {
 
-    //�豸ID
+    //设备ID
     private String deviceId;
 
 	public TBox(String deviceId) {

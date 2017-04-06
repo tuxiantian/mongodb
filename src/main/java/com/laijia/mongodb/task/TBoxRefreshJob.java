@@ -24,7 +24,7 @@ public class TBoxRefreshJob {
 	private EventBus eventBus;
 	private static final int BATCH_NUM = 30;
 	/**
-	 * ¼ÓÔØÔÚ×â³µÁ¾£¬²¢½«Ë¢ĞÂ¼ÓÈëÏß³Ì³ØÖ´ĞĞ
+	 * åŠ è½½åœ¨ç§Ÿè½¦è¾†ï¼Œå¹¶å°†åˆ·æ–°åŠ å…¥çº¿ç¨‹æ± æ‰§è¡Œ
 	 */
 	public void refreshRentCars() {
 
@@ -38,7 +38,7 @@ public class TBoxRefreshJob {
 				list.add(new TBox(""+i));
 			}
 		}
-		//ĞİÃß5Ãë
+		//ä¼‘çœ 5ç§’
 		int sleepTime = 5 * 1000;
 		doInTask(list, sleepTime);
 	}
@@ -46,7 +46,7 @@ public class TBoxRefreshJob {
 		if (list != null && list.size() > 0 && sleepTime > 0) {
 			List<List<TBox>> thirtyList = new ArrayList<>();
 			List<TBox> temp = new ArrayList<>();
-			//Ã¿´ÎÇëÇóÏûºÄ20Ãë
+			//æ¯æ¬¡è¯·æ±‚æ¶ˆè€—20ç§’
 			int i = 0;
 			for (int j = 0; j < list.size(); j++) {
 				TBox tBox = list.get(j);

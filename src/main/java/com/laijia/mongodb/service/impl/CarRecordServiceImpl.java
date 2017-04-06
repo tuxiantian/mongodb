@@ -23,7 +23,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	
 	
 	/**
-	 * ���泵�Ļ�����Ϣ
+	 * 保存车的基本信息
 	 * @param carInfo
 	 */
 	public void saveCarInfo(CarInfo carInfo) {
@@ -50,7 +50,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
-	 * ���泵��λ�������Ϣ
+	 * 保存车的位置相关信息
 	 * @param carLocation
 	 */
 	public void saveCarLocation(CarLocation carLocation) {
@@ -97,7 +97,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
-	 * ��ѯһ�������µ�״̬��Ϣ����receivedTime����
+	 * 查询一辆车最新的状态信息，按receivedTime排序
 	 * @param sn
 	 * @return CarInfo json
 	 */
@@ -112,7 +112,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
-	 * ��ѯһ�������µ�λ����Ϣ����gpsTime����
+	 * 查询一辆车最新的位置信息，按gpsTime排序
 	 * @param sn
 	 * @return CarLocation json
 	 */
@@ -127,7 +127,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
-	 * ��ѯһ��������һ���ļ�¼����receivedTime����
+	 * 查询一辆车最新一条的记录，按receivedTime排序
 	 * @param sn
 	 * @return CarRecord json
 	 */
@@ -143,7 +143,7 @@ public class CarRecordServiceImpl implements CarRecordService {
 	}
 	
 	/**
-	 * ��ѯһ����һ��ʱ��ļ�¼
+	 * 查询一辆车一段时间的记录
 	 * @param startTime
 	 * @param endTime
 	 * @param sn

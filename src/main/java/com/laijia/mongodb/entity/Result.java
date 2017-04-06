@@ -3,7 +3,7 @@ package com.laijia.mongodb.entity;
 import java.io.Serializable;
 
 /**
- * ·µ»ØµÄ½á¹û
+ * è¿”å›žçš„ç»“æžœ
  * Created by wbq on 2016/10/13.
  */
 public class Result implements Serializable {
