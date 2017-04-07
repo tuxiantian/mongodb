@@ -10,7 +10,8 @@ public class MongoDBUtil {
 	// 连接到数据库
 	static 	MongoDatabase mongoDatabase ;
 	static {
-		ServerAddress serverAddress=new ServerAddress("localhost" , 27017);
+		String[] address = PropertiesUtil.getMongodbString("mongo.hostport").split(":");
+		ServerAddress serverAddress=new ServerAddress(address[0] ,Integer.parseInt(address[1]));
 		final MongoClientOptions.Builder builder=new MongoClientOptions.Builder();
 		builder.connectTimeout(PropertiesUtil.getMongodbInteger("mongo.connectTimeout"));
 		builder.maxWaitTime(PropertiesUtil.getMongodbInteger("mongo.maxWaitTime"));
