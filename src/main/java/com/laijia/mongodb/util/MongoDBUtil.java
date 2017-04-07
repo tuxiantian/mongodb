@@ -21,7 +21,7 @@ public class MongoDBUtil {
 		MongoClientOptions clientOptions=builder.build();
 		// 连接到 mongodb 服务
 		MongoClient mongoClient = new MongoClient( serverAddress , clientOptions );
-		mongoDatabase = mongoClient.getDatabase("test");
+		mongoDatabase = mongoClient.getDatabase(PropertiesUtil.getMongodbString("mongo.database"));
 	}
 	private  MongoDBUtil() {
 		
