@@ -1,6 +1,8 @@
 package com.laijia.mongodb.entity;
 
-public class CarInfo {
+import java.io.Serializable;
+
+public class CarInfo implements Serializable{
 	private Integer id;
 	private String sn;
 	private String idc;

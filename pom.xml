@@ -17,6 +17,17 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- activemq -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.9.0</version>
+		</dependency>
 		<!--commons-->
         <dependency>
             <groupId>org.apache.commons</groupId>
